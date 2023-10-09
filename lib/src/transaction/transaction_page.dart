@@ -104,88 +104,103 @@ class _TransactionPageState extends State<TransactionPage> {
             ),
             Consumer<TransactionProvider>(
               builder: (context, value, child) {
-                return Column(
-                  children: List.generate(
-                        value.transactionHistories.length,
-                        (index) => Container(
-                          padding: const EdgeInsets.symmetric(
-                            vertical: 12,
-                            horizontal: 16,
-                          ),
-                          margin: const EdgeInsets.only(
-                            bottom: 24,
-                          ),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8),
-                            color: Colors.white,
-                            border: Border.all(
-                              color: Colors.grey[300]!,
-                            ),
-                          ),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    "${value.transactionHistories[index].transactionType == "TOPUP" ? '+' : '-'} ${NumberFormat.currency(locale: 'id', symbol: 'Rp ', decimalDigits: 0).format(
-                                      value.transactionHistories[index]
-                                          .totalAmount,
-                                    )}",
-                                    style: shortcut.text.bodyLarge!.copyWith(
-                                      color: value.transactionHistories[index]
-                                                  .transactionType ==
-                                              "TOPUP"
-                                          ? Colors.green
-                                          : Colors.red,
-                                    ),
-                                  ),
-                                  Text(
-                                    DateFormat(
-                                            "dd MMMM yyyy, HH:mm WIB", 'id_ID')
-                                        .format(value
-                                            .transactionHistories[index]
-                                            .createdOn!),
-                                    style: shortcut.text.bodySmall!.copyWith(
-                                      color: Colors.grey[400],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Column(
-                                children: [
-                                  const SizedBox(
-                                    height: 8,
-                                  ),
-                                  Text(
-                                    "${value.transactionHistories[index].description}",
-                                    style: shortcut.text.bodySmall,
-                                  ),
-                                ],
-                              ),
-                            ],
+                return value.transactionHistories.isEmpty
+                    ? Center(
+                        child: Text(
+                          "Maaf Tidak ada Histori Transaksi Saat ini",
+                          style: shortcut.text.bodyMedium!.copyWith(
+                            color: Colors.grey,
                           ),
                         ),
-                      ) +
-                      [
-                        Container(
-                          child: TextButton(
-                            onPressed: () {
-                              value.showMoreTransactionHistory();
-                            },
-                            child: Text(
-                              "Show More",
-                              style: shortcut.text.bodyMedium!.copyWith(
-                                color: shortcut.color.primary,
-                                fontWeight: FontWeight.bold,
+                      )
+                    : Column(
+                        children: List.generate(
+                              value.transactionHistories.length,
+                              (index) => Container(
+                                padding: const EdgeInsets.symmetric(
+                                  vertical: 12,
+                                  horizontal: 16,
+                                ),
+                                margin: const EdgeInsets.only(
+                                  bottom: 24,
+                                ),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8),
+                                  color: Colors.white,
+                                  border: Border.all(
+                                    color: Colors.grey[300]!,
+                                  ),
+                                ),
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          "${value.transactionHistories[index].transactionType == "TOPUP" ? '+' : '-'} ${NumberFormat.currency(locale: 'id', symbol: 'Rp ', decimalDigits: 0).format(
+                                            value.transactionHistories[index]
+                                                .totalAmount,
+                                          )}",
+                                          style:
+                                              shortcut.text.bodyLarge!.copyWith(
+                                            color: value
+                                                        .transactionHistories[
+                                                            index]
+                                                        .transactionType ==
+                                                    "TOPUP"
+                                                ? Colors.green
+                                                : Colors.red,
+                                          ),
+                                        ),
+                                        Text(
+                                          DateFormat("dd MMMM yyyy, HH:mm WIB",
+                                                  'id_ID')
+                                              .format(value
+                                                  .transactionHistories[index]
+                                                  .createdOn!),
+                                          style:
+                                              shortcut.text.bodySmall!.copyWith(
+                                            color: Colors.grey[400],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Column(
+                                      children: [
+                                        const SizedBox(
+                                          height: 8,
+                                        ),
+                                        Text(
+                                          "${value.transactionHistories[index].description}",
+                                          style: shortcut.text.bodySmall,
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
                               ),
-                            ),
-                          ),
-                        )
-                      ],
-                );
+                            ) +
+                            [
+                              Container(
+                                child: TextButton(
+                                  onPressed: () {
+                                    value.showMoreTransactionHistory();
+                                  },
+                                  child: Text(
+                                    "Show More",
+                                    style: shortcut.text.bodyMedium!.copyWith(
+                                      color: shortcut.color.primary,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                              )
+                            ],
+                      );
               },
             ),
           ],
