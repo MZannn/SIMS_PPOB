@@ -19,7 +19,7 @@ class HomeProvider extends ChangeNotifier {
   bool _isHidden = true;
   bool get isHidden => _isHidden;
   List<ServiceModel> services = [];
-  List<BannerModel> listBanner = [];
+  List<BannerModel> banners = [];
   Future<UserModel> getUser(BuildContext context) async {
     try {
       Response response = await api.get(
@@ -109,7 +109,7 @@ class HomeProvider extends ChangeNotifier {
             .toList();
       }
       notifyListeners();
-      return listBanner = data;
+      return banners = data;
     } catch (e) {
       throw context.snackbar(label: e.toString());
     }

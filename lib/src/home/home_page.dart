@@ -245,7 +245,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   scrollDirection: Axis.horizontal,
                   child: Row(
-                    children: value.listBanner
+                    children: value.banners
                         .map(
                           (e) => InkWell(
                             onTap: () {

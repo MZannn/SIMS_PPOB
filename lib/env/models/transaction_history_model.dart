@@ -1,16 +1,17 @@
-class TransactionHistoryModelResponse {
+class ResponseResultTransactionHistoryModel {
   int? status;
   String? message;
   TransactionHistoryModel? data;
 
-  TransactionHistoryModelResponse({
+  ResponseResultTransactionHistoryModel({
     this.status,
     this.message,
     this.data,
   });
 
-  factory TransactionHistoryModelResponse.fromJson(Map<String, dynamic> json) =>
-      TransactionHistoryModelResponse(
+  factory ResponseResultTransactionHistoryModel.fromJson(
+          Map<String, dynamic> json) =>
+      ResponseResultTransactionHistoryModel(
         status: json["status"],
         message: json["message"],
         data: json["data"] == null

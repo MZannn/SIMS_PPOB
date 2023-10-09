@@ -1,16 +1,16 @@
-class UserModelResponse {
+class ResponseResultUserModel {
   int? status;
   String? message;
   UserModel? data;
 
-  UserModelResponse({
+  ResponseResultUserModel({
     this.status,
     this.message,
     this.data,
   });
 
-  factory UserModelResponse.fromJson(Map<String, dynamic> json) =>
-      UserModelResponse(
+  factory ResponseResultUserModel.fromJson(Map<String, dynamic> json) =>
+      ResponseResultUserModel(
         status: json["status"],
         message: json["message"],
         data: json["data"] == null ? null : UserModel.fromJson(json["data"]),

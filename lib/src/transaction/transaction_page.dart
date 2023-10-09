@@ -106,7 +106,7 @@ class _TransactionPageState extends State<TransactionPage> {
               builder: (context, value, child) {
                 return Column(
                   children: List.generate(
-                        value.transactionHistory.length,
+                        value.transactionHistories.length,
                         (index) => Container(
                           padding: const EdgeInsets.symmetric(
                             vertical: 12,
@@ -130,12 +130,12 @@ class _TransactionPageState extends State<TransactionPage> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    "${value.transactionHistory[index].transactionType == "TOPUP" ? '+' : '-'} ${NumberFormat.currency(locale: 'id', symbol: 'Rp ', decimalDigits: 0).format(
-                                      value.transactionHistory[index]
+                                    "${value.transactionHistories[index].transactionType == "TOPUP" ? '+' : '-'} ${NumberFormat.currency(locale: 'id', symbol: 'Rp ', decimalDigits: 0).format(
+                                      value.transactionHistories[index]
                                           .totalAmount,
                                     )}",
                                     style: shortcut.text.bodyLarge!.copyWith(
-                                      color: value.transactionHistory[index]
+                                      color: value.transactionHistories[index]
                                                   .transactionType ==
                                               "TOPUP"
                                           ? Colors.green
@@ -145,7 +145,8 @@ class _TransactionPageState extends State<TransactionPage> {
                                   Text(
                                     DateFormat(
                                             "dd MMMM yyyy, HH:mm WIB", 'id_ID')
-                                        .format(value.transactionHistory[index]
+                                        .format(value
+                                            .transactionHistories[index]
                                             .createdOn!),
                                     style: shortcut.text.bodySmall!.copyWith(
                                       color: Colors.grey[400],
@@ -159,7 +160,7 @@ class _TransactionPageState extends State<TransactionPage> {
                                     height: 8,
                                   ),
                                   Text(
-                                    "${value.transactionHistory[index].description}",
+                                    "${value.transactionHistories[index].description}",
                                     style: shortcut.text.bodySmall,
                                   ),
                                 ],

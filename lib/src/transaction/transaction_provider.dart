@@ -5,7 +5,7 @@ import 'package:sims_ppob_muhammadfauzan/env/models/transaction_history_model.da
 
 class TransactionProvider extends ChangeNotifier {
   final PPOBApi api = PPOBApi();
-  List<TransactionHistory> transactionHistory = [];
+  List<TransactionHistory> transactionHistories = [];
 
   Future<List<TransactionHistory>> getTransactionHistory() async {
     try {
@@ -21,7 +21,7 @@ class TransactionProvider extends ChangeNotifier {
           .map<TransactionHistory>((e) => TransactionHistory.fromJson(e))
           .toList();
       notifyListeners();
-      return transactionHistory = data;
+      return transactionHistories = data;
     } catch (e) {
       throw e.toString();
     }
@@ -32,7 +32,7 @@ class TransactionProvider extends ChangeNotifier {
       Response response = await api.get(
         path: 'transaction/history',
         param: {
-          "offset": transactionHistory.length,
+          "offset": transactionHistories.length,
           "limit": 5,
         },
         requiredAuthToken: true,
@@ -41,7 +41,7 @@ class TransactionProvider extends ChangeNotifier {
           .map<TransactionHistory>((e) => TransactionHistory.fromJson(e))
           .toList();
       notifyListeners();
-      return transactionHistory = [...transactionHistory, ...data];
+      return transactionHistories = [...transactionHistories, ...data];
     } catch (e) {
       throw e.toString();
     }

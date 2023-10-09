@@ -39,7 +39,6 @@ class App extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'SIMS PPOB Muhammad Fauzan',
         theme: ThemeData(
-          // useMaterial3: true,
           scaffoldBackgroundColor: Colors.white,
           dialogBackgroundColor: Colors.white,
           dialogTheme: DialogTheme(

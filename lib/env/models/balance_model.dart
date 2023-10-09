@@ -1,16 +1,16 @@
-class BalanceModelResponse {
+class ResponseResultBalanceModel {
   int? status;
   String? message;
   BalanceModel? data;
 
-  BalanceModelResponse({
+  ResponseResultBalanceModel({
     this.status,
     this.message,
     this.data,
   });
 
-  factory BalanceModelResponse.fromJson(Map<String, dynamic> json) =>
-      BalanceModelResponse(
+  factory ResponseResultBalanceModel.fromJson(Map<String, dynamic> json) =>
+      ResponseResultBalanceModel(
         status: json["status"],
         message: json["message"],
         data: json["data"] == null ? null : BalanceModel.fromJson(json["data"]),

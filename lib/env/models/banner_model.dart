@@ -1,16 +1,16 @@
-class BannerModelResponse {
+class ResponseResultBannerModel {
   int? status;
   String? message;
   List<BannerModel>? data;
 
-  BannerModelResponse({
+  ResponseResultBannerModel({
     this.status,
     this.message,
     this.data,
   });
 
-  factory BannerModelResponse.fromJson(Map<String, dynamic> json) =>
-      BannerModelResponse(
+  factory ResponseResultBannerModel.fromJson(Map<String, dynamic> json) =>
+      ResponseResultBannerModel(
         status: json["status"],
         message: json["message"],
         data: json["data"] == null
