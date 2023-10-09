@@ -17,7 +17,7 @@ class HomeMenuItem extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: SizedBox(
-        width: (shortcut.query.size.width - 32) / 7.4,
+        width: (shortcut.query.size.width - 48) / 7.2,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
