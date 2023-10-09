@@ -35,7 +35,6 @@ class TopUpProvider extends ChangeNotifier {
         },
         requiredAuthToken: true,
       );
-      log(response.data.toString());
       if (response.statusCode != 200) {
         context.snackbar(
           label: response.data['message'],

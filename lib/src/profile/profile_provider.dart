@@ -58,7 +58,6 @@ class ProfileProvider extends ChangeNotifier {
     try {
       if (imageFile != null &&
           (firstName != user!.firstName || lastName != user!.lastName)) {
-        print('data1');
         FormData formData = FormData.fromMap({
           'file': await MultipartFile.fromFile(
             imageFile.path,
@@ -83,7 +82,7 @@ class ProfileProvider extends ChangeNotifier {
           },
           requiredAuthToken: true,
         );
-        log('update data ${updateProfileResponse.data}');
+
         if (updateImageResponse.statusCode != 200 &&
             updateProfileResponse.statusCode != 200) {
           context.snackbar(
